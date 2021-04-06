@@ -1,11 +1,10 @@
 def print_vars():
-    dict = sys._getframe(1).f_locals
-    for key, value in dict.items():
-        if (type(value) == None or type(value) == bool or type(value) == int  or
-                type(value) == float or type(value) == complex or list or tuple or
-                type(value) == str or type(value) == bytes or type(value) == bytearray or
-                type(value) == memoryview or type(value) == set or type(value) == frozenset or type(value) == dict):
+    varlist = [None, bool, int, float, complex, list, tuple, str, bytes, bytearray, memoryview, set, frozenset, dict]
+    dictionary = sys._getframe(1).f_locals
+    for key, value in dictionary.items():
+        if (type(value) in varlist):
             print(key, ": True")
+
         else:
             print(key, ": False")
 
